@@ -21,43 +21,43 @@ type Contact struct {
 }
 
 type User struct {
-	ID                 primitive.ObjectID   `json:"ID" bson:"_id"`
-	Password           string               `json:"-" bson:"password"`
-	Contact            Contact              `json:"contact" bson:"contact"`
-	Locale             string               `json:"locale" bson:"locale"`
-	CreatedAt          time.Time            `json:"-" bson:"createdAt"`
-	Status             string               `json:"status" bson:"status"`
-	Tags               []string             `json:"tags" bson:"tags"`
-	Education          string               `json:"education" bson:"education"`
-	Age                uint                 `json:"age" bson:"age"`
-	City               string               `json:"city" bson:"city"`
-	Name               string               `json:"name" bson:"name"`
-	PhotoURL           string               `json:"photoURL" bson:"photoURL"`
-	Description        string               `json:"description" bson:"description"`
-	Email              string               `json:"email" bson:"email"`
-	EmailVerified      bool                 `json:"emailVerified" bson:"emailVerified"`
-	RegisteredProjects []primitive.ObjectID `json:"registeredProjects" bson:"registeredProjects"`
-	Rating             float64              `json:"rating" bson:"rating"`
-	Rates              []Rate               `json:"rates" bson:"rates"`
+	ID            primitive.ObjectID `json:"ID" bson:"_id"`
+	Password      string             `json:"-" bson:"password"`
+	Contact       Contact            `json:"contact" bson:"contact"`
+	Locale        string             `json:"locale" bson:"locale"`
+	CreatedAt     time.Time          `json:"-" bson:"createdAt"`
+	Status        string             `json:"status" bson:"status"`
+	Tags          []string           `json:"tags" bson:"tags"`
+	Education     string             `json:"education" bson:"education"`
+	Age           uint               `json:"age" bson:"age"`
+	City          string             `json:"city" bson:"city"`
+	Name          string             `json:"name" bson:"name"`
+	PhotoURL      string             `json:"photoURL" bson:"photoURL"`
+	Description   string             `json:"description" bson:"description"`
+	Email         string             `json:"email" bson:"email"`
+	EmailVerified bool               `json:"emailVerified" bson:"emailVerified"`
+	//RegisteredProjects []primitive.ObjectID `json:"registeredProjects" bson:"registeredProjects"`
+	Rating float64 `json:"rating" bson:"rating"`
+	Rates  []Rate  `json:"rates" bson:"rates"`
 }
 
 type UserWithCredentials struct {
-	Id                 primitive.ObjectID   `json:"ID" bson:"_id"`
-	Password           string               `json:"password" bson:"password"`
-	Contact            Contact              `json:"contact" bson:"contact"`
-	Locale             string               `json:"locale" bson:"locale"`
-	CreatedAt          time.Time            `json:"createdAt" bson:"createdAt"`
-	Status             string               `json:"status" bson:"status"`
-	Tags               []string             `json:"tags" bson:"tags"`
-	Education          string               `json:"education" bson:"education"`
-	Age                uint                 `json:"age" bson:"age"`
-	City               string               `json:"city" bson:"city"`
-	FIO                string               `json:"FIO" bson:"FIO"`
-	PhotoURL           string               `json:"photoURL" bson:"photoURL"`
-	Description        string               `json:"description" bson:"description"`
-	Email              string               `json:"email" bson:"email"`
-	EmailVerified      bool                 `json:"emailVerified" bson:"emailVerified"`
-	RegisteredProjects []primitive.ObjectID `json:"registeredProjects" bson:"registeredProjects"`
+	Id            primitive.ObjectID `json:"ID" bson:"_id"`
+	Password      string             `json:"password" bson:"password"`
+	Contact       Contact            `json:"contact" bson:"contact"`
+	Locale        string             `json:"locale" bson:"locale"`
+	CreatedAt     time.Time          `json:"createdAt" bson:"createdAt"`
+	Status        string             `json:"status" bson:"status"`
+	Tags          []string           `json:"tags" bson:"tags"`
+	Education     string             `json:"education" bson:"education"`
+	Age           uint               `json:"age" bson:"age"`
+	City          string             `json:"city" bson:"city"`
+	FIO           string             `json:"FIO" bson:"FIO"`
+	PhotoURL      string             `json:"photoURL" bson:"photoURL"`
+	Description   string             `json:"description" bson:"description"`
+	Email         string             `json:"email" bson:"email"`
+	EmailVerified bool               `json:"emailVerified" bson:"emailVerified"`
+	//RegisteredProjects []primitive.ObjectID `json:"registeredProjects" bson:"registeredProjects"`
 }
 
 type Project struct {

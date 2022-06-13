@@ -105,12 +105,6 @@ func ProjectParticipants(c *gin.Context) {
 		})
 		return
 	}
-	if project.AuthorId != userID {
-		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
-			"error": cErrors.ReplyErr(cErrors.NotAdminOfProject),
-		})
-		return
-	}
 	var limitInt, pageInt int
 	limit, isExist := c.GetQuery("limit")
 	limitInt, err = strconv.Atoi(limit)
