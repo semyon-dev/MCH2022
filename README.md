@@ -22,4 +22,8 @@
 
 `docker run -d -p 8080:8080 backend`
 
+## Мобильное приложение тут
+
+https://github.com/Dronicho/moscow_hack_mobile
+
 
