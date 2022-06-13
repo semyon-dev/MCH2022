@@ -13,13 +13,7 @@ import (
 func CreateProject(c *gin.Context) {
 	var pr model.Project
 	var err error
-	err = c.ShouldBindJSON(&pr)
-	if err != nil {
-		log.Println(err)
-		c.JSON(http.StatusBadRequest, cErrors.ReplyOnlyErr(cErrors.InvalidBodyInput))
-		return
-	}
-
+	
 	pr.AuthorId, err = primitive.ObjectIDFromHex(c.GetString("userID"))
 	if err != nil {
 		log.Println(err)
