@@ -35,9 +35,17 @@ func DeleteParticipant(c *gin.Context) {
 		return
 	}
 
+	var u string
+	if u = c.Param("userID"); u == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": cErrors.InvalidBodyInput,
+		})
+		return
+	}
+
 	projectID, _ := primitive.ObjectIDFromHex(p)
 
-	userID, _ := primitive.ObjectIDFromHex(c.GetString("userID"))
+	userID, _ := primitive.ObjectIDFromHex(u)
 
 	db.DeleteUserFromProject(projectID, userID)
 

@@ -26,6 +26,21 @@ func DeleteUserFromProject(projectID, userID primitive.ObjectID) {
 	}
 }
 
+func AcceptUserToProject(projectID, userID primitive.ObjectID) {
+	filter := bson.M{"_id": projectID}
+	update := bson.M{"$pull": bson.M{"participants": userID}}
+	_, err := db.Collection(ProjectsCollection).UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Println(err)
+	}
+
+	update = bson.M{"$push": bson.M{"acceptedParticipants": userID}}
+	_, err = db.Collection(ProjectsCollection).UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 func AddRateToUser(userID primitive.ObjectID, rate model.Rate) error {
 	filter := bson.M{"_id": userID}
 	update := bson.M{"$push": bson.M{"rates": rate}}

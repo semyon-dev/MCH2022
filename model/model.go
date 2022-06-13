@@ -61,33 +61,34 @@ type UserWithCredentials struct {
 }
 
 type Project struct {
-	Id                 primitive.ObjectID     `json:"ID" bson:"_id"`
-	AuthorId           primitive.ObjectID     `json:"authorID" bson:"authorID"`
-	PhotoURL           string                 `json:"photoURL" bson:"photoURL"`
-	Name               string                 `json:"name" bson:"name"`
-	Type               string                 `json:"type" bson:"type"`
-	ShortDescription   string                 `json:"shortDescription" bson:"shortDescription"`
-	Description        string                 `json:"description" bson:"description"`
-	Location           string                 `json:"location" bson:"location"`
-	Skills             []string               `json:"skills" bson:"skills"`
-	AgeStart           int                    `json:"ageStart" bson:"ageStart"`
-	AgeEnd             int                    `json:"ageEnd" bson:"ageEnd"`
-	Direction          string                 `json:"direction" bson:"direction"` // направление
-	Website            string                 `json:"website" bson:"website"`
-	Participation      string                 `json:"participation" bson:"participation"` // Способ участия - офлайн/онлайн
-	Tags               []string               `json:"tags" bson:"tags"`
-	Roles              []string               `json:"roles" bson:"roles"`
-	Requirements       []string               `json:"requirements" bson:"requirements"`
-	Services           []string               `json:"services" bson:"services"`
-	Deadline           primitive.DateTime     `json:"deadline" bson:"deadline"` // дедлайн подачи заявки
-	TimeEnd            primitive.DateTime     `json:"timeEnd" bson:"timeEnd"`
-	TimeStart          primitive.DateTime     `json:"timeStart" bson:"timeStart"`
-	CreatedAt          time.Time              `json:"-" bson:"createdAt"`
-	Participants       []primitive.ObjectID   `json:"participants" bson:"participants"`
-	BannedParticipants []primitive.ObjectID   `json:"bannedParticipants" bson:"bannedParticipants"`
-	CustomFieldsInput  []CustomField          `json:"customFields" bson:"-"`
-	CustomFields       map[string]CustomField `json:"customFieldsMap" bson:"customFields"`
-	ParticipantsCount  int                    `json:"participantsCount" bson:"-"`
+	Id                   primitive.ObjectID     `json:"ID" bson:"_id"`
+	AuthorId             primitive.ObjectID     `json:"authorID" bson:"authorID"`
+	PhotoURL             string                 `json:"photoURL" bson:"photoURL"`
+	Name                 string                 `json:"name" bson:"name"`
+	Type                 string                 `json:"type" bson:"type"`
+	ShortDescription     string                 `json:"shortDescription" bson:"shortDescription"`
+	Description          string                 `json:"description" bson:"description"`
+	Location             string                 `json:"location" bson:"location"`
+	Skills               []string               `json:"skills" bson:"skills"`
+	AgeStart             int                    `json:"ageStart" bson:"ageStart"`
+	AgeEnd               int                    `json:"ageEnd" bson:"ageEnd"`
+	Direction            string                 `json:"direction" bson:"direction"` // направление
+	Website              string                 `json:"website" bson:"website"`
+	Participation        string                 `json:"participation" bson:"participation"` // Способ участия - офлайн/онлайн
+	Tags                 []string               `json:"tags" bson:"tags"`
+	Roles                []string               `json:"roles" bson:"roles"`
+	Requirements         []string               `json:"requirements" bson:"requirements"`
+	Services             []string               `json:"services" bson:"services"`
+	Deadline             primitive.DateTime     `json:"deadline" bson:"deadline"` // дедлайн подачи заявки
+	TimeEnd              primitive.DateTime     `json:"timeEnd" bson:"timeEnd"`
+	TimeStart            primitive.DateTime     `json:"timeStart" bson:"timeStart"`
+	CreatedAt            time.Time              `json:"-" bson:"createdAt"`
+	Participants         []primitive.ObjectID   `json:"participants" bson:"participants"`
+	AcceptedParticipants []primitive.ObjectID   `json:"acceptedParticipants" bson:"acceptedParticipants"`
+	BannedParticipants   []primitive.ObjectID   `json:"bannedParticipants" bson:"bannedParticipants"`
+	CustomFieldsInput    []CustomField          `json:"customFields" bson:"-"`
+	CustomFields         map[string]CustomField `json:"customFieldsMap" bson:"customFields"`
+	ParticipantsCount    int                    `json:"participantsCount" bson:"-"`
 }
 
 type Rate struct {
