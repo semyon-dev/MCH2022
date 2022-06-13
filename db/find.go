@@ -98,6 +98,29 @@ func GetProjectsByFilters(ageStart, ageEnd int, participation, location, directi
 	return
 }
 
+func GetNKOsByFilters(searchQuery string, tags []string) (nkos []model.NKO) {
+	var filters = []bson.M{}
+	if len(tags) != 0 {
+		filters = append(filters, bson.M{"tags": bson.M{"$in": tags}})
+	}
+	if searchQuery != "" {
+		filters = append(filters, bson.M{"name": bson.M{"$regex": searchQuery, "$options": "$i"}})
+	}
+	filter := bson.M{"$and": filters}
+	if len(filters) == 0 {
+		filter = bson.M{}
+	}
+	o := options.Find().SetBatchSize(100).SetAllowDiskUse(true).SetAllowPartialResults(false)
+	cursor, err := db.Collection(NKOCollection).Find(context.Background(), filter, o)
+	if err != nil {
+		log.Println(err)
+	}
+	if err = cursor.All(context.Background(), &nkos); err != nil {
+		log.Println(err)
+	}
+	return
+}
+
 func GetUsers() (users []model.User) {
 	cursor, err := db.Collection(UsersCollection).Find(context.Background(), bson.M{})
 	if err != nil {

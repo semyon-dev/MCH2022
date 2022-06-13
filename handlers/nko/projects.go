@@ -48,7 +48,6 @@ func FindProjects(c *gin.Context) {
 				itogProjects = append(itogProjects, v)
 			}
 		}
-	} else {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
