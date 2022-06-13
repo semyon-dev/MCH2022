@@ -61,7 +61,8 @@ func main() {
 	usersGroup.GET("", user.GetUser)
 	nkoGroup.GET("/me", user.GetNKO)
 	usersGroup.PATCH("/project/:id", user.ProjectParticipate)
-	usersGroup.DELETE("/project/:id", user.DeleteParticipant)
+	usersGroup.DELETE("/project/:id/:userID", user.DeleteParticipant)
+	usersGroup.PATCH("/project/:id/:userID", user.AcceptParticipant)
 
 	nkoGroup.GET("/projects", user.GetNKOProjects)
 

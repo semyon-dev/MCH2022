@@ -54,3 +54,33 @@ func DeleteParticipant(c *gin.Context) {
 	},
 	)
 }
+
+func AcceptParticipant(c *gin.Context) {
+
+	var p string
+	if p = c.Param("id"); p == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": cErrors.InvalidBodyInput,
+		})
+		return
+	}
+
+	var u string
+	if u = c.Param("userID"); u == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": cErrors.InvalidBodyInput,
+		})
+		return
+	}
+
+	projectID, _ := primitive.ObjectIDFromHex(p)
+
+	userID, _ := primitive.ObjectIDFromHex(u)
+
+	db.AcceptUserToProject(projectID, userID)
+
+	c.JSON(http.StatusNoContent, gin.H{
+		"error": cErrors.ReplyOK(),
+	},
+	)
+}
