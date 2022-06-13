@@ -66,27 +66,19 @@ func GetUserById(c *gin.Context) {
 	})
 }
 
-func GetUserProjects(c *gin.Context) {
-
+func GetNKOProjects(c *gin.Context) {
 	userID, _ := primitive.ObjectIDFromHex(c.GetString("userID"))
-	memberProjects, createdProjects, err := service.GetUserProjects(userID)
+	createdProjects, err := service.GetMyProjects(userID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": cErrors.ReplyErr(err),
-			"data": gin.H{
-				"memberProjects":  memberProjects,
-				"createdProjects": createdProjects,
-			},
+			"data":  createdProjects,
 		})
 		return
 	}
-
 	c.JSON(http.StatusOK, gin.H{
 		"error": cErrors.ReplyOK(),
-		"data": gin.H{
-			"memberProjects":  memberProjects,
-			"createdProjects": createdProjects,
-		},
+		"data":  createdProjects,
 	})
 }
 

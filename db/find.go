@@ -132,18 +132,6 @@ func GetUsers() (users []model.User) {
 	return users
 }
 
-func GetProjectsByIds(ids []primitive.ObjectID) (Projects []model.Project) {
-	filter := bson.M{"_id": bson.M{"$in": ids}}
-	cursor, err := db.Collection(ProjectsCollection).Find(context.Background(), filter)
-	if err != nil {
-		log.Println(err)
-	}
-	if err = cursor.All(context.Background(), &Projects); err != nil {
-		log.Println(err)
-	}
-	return
-}
-
 func GetProjectsByAuthorId(authorId primitive.ObjectID) (Projects []model.Project) {
 	filter := bson.M{"authorID": authorId}
 	cursor, err := db.Collection(ProjectsCollection).Find(context.Background(), filter)
