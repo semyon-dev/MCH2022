@@ -35,7 +35,7 @@ func CreateUser(user model.UserWithCredentials) (newUser model.UserWithCredentia
 	if user.Tags == nil {
 		user.Tags = []string{}
 	}
-	user.RegisteredProjects = []primitive.ObjectID{}
+	//user.RegisteredProjects = []primitive.ObjectID{}
 	if user.PhotoURL == "" {
 		user.PhotoURL = config.DefaultUserPicture
 	}
