@@ -12,8 +12,8 @@ import (
 
 func FindNkos(c *gin.Context) {
 
-	ratingStart, _ := strconv.ParseInt(c.Query("ratingStart"), 10, 64)
-	ratingEnd, _ := strconv.ParseInt(c.Query("ratingEnd"), 10, 64)
+	ratingStart, _ := strconv.ParseFloat(c.Query("ratingStart"), 10)
+	ratingEnd, _ := strconv.ParseFloat(c.Query("ratingEnd"), 10)
 	tags := c.QueryArray("tags")
 	searchQuery := c.Query("search_query")
 	nkos := db.GetNKOsByFilters(searchQuery, tags)
@@ -23,10 +23,10 @@ func FindNkos(c *gin.Context) {
 
 	var result = []model.NKO{}
 
-	for _, nko := range nkos {
-		nko.Rating = db.CountRating(nko.Rates)
-		if nko.Rating >= float64(ratingStart) && nko.Rating <= float64(ratingEnd) {
-			result = append(result, nko)
+	for i, _ := range nkos {
+		nkos[i].Rating = db.CountRating(nkos[i].Rates)
+		if nkos[i].Rating >= ratingStart && nkos[i].Rating <= ratingEnd {
+			result = append(result, nkos[i])
 		}
 	}
 

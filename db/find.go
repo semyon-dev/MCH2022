@@ -212,17 +212,6 @@ func GetNKO(id primitive.ObjectID) (nko model.NKO, isExist bool) {
 	return nko, true
 }
 
-func GetNKOs() (nkos []model.NKO) {
-	cursor, err := db.Collection(NKOCollection).Find(context.Background(), bson.M{})
-	if err != nil {
-		log.Println(err)
-	}
-	if err = cursor.All(context.Background(), &nkos); err != nil {
-		log.Println(err)
-	}
-	return nkos
-}
-
 func GetUserById(id primitive.ObjectID) (user model.User, isExist bool) {
 	filter := bson.M{"_id": id}
 	opts := options.FindOne()
