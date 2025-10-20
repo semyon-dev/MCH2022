@@ -1,18 +1,19 @@
-# MoscowCityHack2022 - кейс 2
+# MoscowCityHack2022 - (second case)
 
-## Стек бэкенда
+## ⚠️ This project is archived 
+## Stack
 
 * Go 1.18
 * JWT
 * MongoDB
 
-Пример .env файла - example.env
+Example for env - example.env
 
-## Запуск проекта
+## Run project
 
 `go run main.go`
 
-## Скомпилировать бинарник
+## Compile binary
 
 `go build`
 
@@ -22,7 +23,7 @@
 
 `docker run -d -p 8080:8080 backend`
 
-## Мобильное приложение тут
+## Mobile app
 
 https://github.com/Dronicho/moscow_hack_mobile
 
